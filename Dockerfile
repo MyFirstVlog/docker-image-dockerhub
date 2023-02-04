@@ -17,5 +17,10 @@ COPY . .
 # Do testing
 RUN yarn run test
 
+#Eliminate undesired folders that make storage of the image increase
+RUN rm -rf tests && rm -rf node_modules
+
+RUN npm install --prod
+
 #solo se permite uno en el docker file
 CMD [ "node" ,"app.js" ]
