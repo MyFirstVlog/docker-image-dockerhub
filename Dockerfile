@@ -1,5 +1,6 @@
-FROM --platform=$BUILDPLATFORM node:19.2-alpine3.16
+# FROM --platform=$BUILDPLATFORM node:19.2-alpine3.16
 # FROM --platform=linux/amd64 node:19.2-alpine3.16
+FROM node:19.2-alpine3.16
 #  /app normalemnte ya viene configurada para montar nuestra aplicación
 
 #cd app
@@ -25,3 +26,8 @@ RUN npm install --prod
 
 #solo se permite uno en el docker file
 CMD [ "node" ,"app.js" ]
+
+
+#docker buildx build \
+#--platform linux/amd64,linux/arm64,linux/arm/v7 \
+#-t alejoestradam/cron-ticker:pandora --push .
